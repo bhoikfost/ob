@@ -5,7 +5,7 @@
 # Install Var Script / Host IP
 export DEBIAN_FRONTEND=noninteractive
 OS=`uname -m`;
-echo "Masukin Domain Mu Sayang - Script Recode By WILDYVPN"
+echo "domain sia asupkn"
 read -p "Hostname :" host
 echo "IP=$host" >> /root/ipvps.conf
 MYIP=$(dig @resolver1.opendns.com -t A -4 myip.opendns.com +short)
@@ -96,15 +96,15 @@ apt -y install nginx
 cd
 rm /etc/nginx/sites-enabled/default
 rm /etc/nginx/sites-available/default
-wget -O /etc/nginx/nginx.conf "https://vpnstores.net/script/nginx.conf"
+wget -O /etc/nginx/nginx.conf "http://autoscript.vpnstores.net/script/nginx.conf"
 mkdir -p /home/vps/public_html
 echo "<pre>Setup Modif By bhoikfost yahya</pre>" > /home/vps/public_html/index.html
-wget -O /etc/nginx/conf.d/vps.conf "https://vpnstores.net/script/vps.conf"
+wget -O /etc/nginx/conf.d/vps.conf "http://autoscript.vpnstores.net/vps.conf"
 /etc/init.d/nginx restart
 
 # Menginstall badvpn dan Configurasi Badvpn Client dan IP IPnya
 cd
-wget -O /usr/bin/badvpn-udpgw "https://vpnstores.net/badvpn-udpgw64"
+wget -O /usr/bin/badvpn-udpgw "http://autoscript.vpnstores.net/badvpn-udpgw64"
 sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7100 --max-clients 1000' /etc/rc.local
 sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7200 --max-clients 1000' /etc/rc.local
 sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-clients 1000' /etc/rc.local
@@ -135,7 +135,7 @@ rm -rf /root/dropbear-2020.80
 # install squid3 port dan install file config squid 3
 cd
 apt -y install squid3
-wget -O /etc/squid/squid.conf "https://vpnstores.net/squidbaru.conf"
+wget -O /etc/squid/squid.conf "http://autoscript.vpnstores.net/squidbaru.conf"
 sed -i $MYIP2 /etc/squid/squid.conf
 
 # Menginstall VN Stat Dan Config VNSTAT
@@ -205,11 +205,11 @@ sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
 /etc/init.d/stunnel4 restart
 
 #Configurasi OpenVPN & Wireguard & SSR & L2TP & Dan V2RAY
-wget https://vpnstores.net/ovpn.sh &&  chmod +x ovpn.sh && ./ovpn.sh
-wget https://vpnstores.net/script/wg.sh && chmod +x wg.sh && ./wg.sh
-wget https://vpnstores.net/script/ssr.sh && chmod +x ssr.sh && ./ssr.sh
-wget https://vpnstores.net/ipsec.sh && chmod +x ipsec.sh && ./ipsec.sh
-wget https://vpnstores.net/v2ray.sh && chmod +x v2ray.sh && ./v2ray.sh
+wget http://autoscript.vpnstores.net/ovpn.sh &&  chmod +x ovpn.sh && ./ovpn.sh
+wget http://autoscript.vpnstores.net/script/wg.sh && chmod +x wg.sh && ./wg.sh
+wget http://autoscript.vpnstores.net/script/ssr.sh && chmod +x ssr.sh && ./ssr.sh
+wget http://autoscript.vpnstores.net/ipsec.sh && chmod +x ipsec.sh && ./ipsec.sh
+wget http://autoscript.vpnstores.net/v2ray.sh && chmod +x v2ray.sh && ./v2ray.sh
 
 # Menginstall Fail2BAN / Multi Log Banned
 apt -y install fail2ban
@@ -252,21 +252,21 @@ sed -i 's@DROPBEAR_BANNER=""@DROPBEAR_BANNER="/etc/issue.net"@g' /etc/default/dr
 
 # DOWNLOAD FILE BADAGGGGGGGG
 cd /usr/bin
-wget -O about "https://vpnstores.net/script/about.sh"
-wget -O v2ray "https://vpnstores.net/script/menu.sh"
-wget -O v2ray "https://vpnstores.net/script/ss.sh"
-wget -O usernew "https://vpnstores.net/script/usernew.sh"
-wget -O trial "https://vpnstores.net/script/trial.sh"
-wget -O hapus "https://vpnstores.net/script/hapus.sh"
-wget -O member "https://vpnstores.net/script/member.sh"
-wget -O delete "https://vpnstores.net/script/delete.sh"
-wget -O cek "https://vpnstores.net/script/cek.sh"
-wget -O restart "https://vpnstores.net/script/restart.sh"
-wget -O speedtest "https://vpnstores.net/script/speedtest.py"
-wget -O info "https://vpnstores.net/script/info.sh"
-wget -O ram "https://vpnstores.net/script/ram.sh"
-wget -O renew "https://vpnstores.net/script/renew.sh"
-wget -O v2ray "https://vpnstores.net/script/v2ray.sh"
+wget -O about "http://autoscript.vpnstores.net/script/about.sh"
+wget -O v2ray "http://autoscript.vpnstores.net/script/menu.sh"
+wget -O v2ray "http://autoscript.vpnstores.net/script/ss.sh"
+wget -O usernew "http://autoscript.vpnstores.net/script/usernew.sh"
+wget -O trial "http://autoscript.vpnstores.net/script/trial.sh"
+wget -O hapus "http://autoscript.vpnstores.net/script/hapus.sh"
+wget -O member "http://autoscript.vpnstores.net/script/member.sh"
+wget -O delete "http://autoscript.vpnstores.net/script/delete.sh"
+wget -O cek "http://autoscript.vpnstores.net/script/cek.sh"
+wget -O restart "http://autoscript.vpnstores.net/script/restart.sh"
+wget -O speedtest "http://autoscript.vpnstores.net/script/speedtest.py"
+wget -O info "http://autoscript.vpnstores.net/script/info.sh"
+wget -O ram "http://autoscript.vpnstores.net/script/ram.sh"
+wget -O renew "http://autoscript.vpnstores.net/script/renew.sh"
+wget -O v2ray "http://autoscript.vpnstores.net/script/v2ray.sh"
 
 echo "SABAR MANG KEDENG DEUI GEHH ANGGES" >> /etc/crontab
 chmod +x menu
