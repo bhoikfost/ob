@@ -5,7 +5,7 @@
 # Install Var Script / Host IP
 export DEBIAN_FRONTEND=noninteractive
 OS=`uname -m`;
-echo "domain sia naon/masukan domain (momomok steh)"
+echo "Masukin Domain Mu Sayang - Script Recode By WILDYVPN"
 read -p "Hostname :" host
 echo "IP=$host" >> /root/ipvps.conf
 MYIP=$(dig @resolver1.opendns.com -t A -4 myip.opendns.com +short)
@@ -96,15 +96,15 @@ apt -y install nginx
 cd
 rm /etc/nginx/sites-enabled/default
 rm /etc/nginx/sites-available/default
-wget -O /etc/nginx/nginx.conf "https://wildyvpn.my.id/script/nginx.conf"
+wget -O /etc/nginx/nginx.conf "https://vpnstores.net/script/nginx.conf"
 mkdir -p /home/vps/public_html
-echo "<pre>Setup Modif By WILDY VPN</pre>" > /home/vps/public_html/index.html
-wget -O /etc/nginx/conf.d/vps.conf "https://wildyvpn.my.id/script/vps.conf"
+echo "<pre>Setup Modif By bhoikfost yahya</pre>" > /home/vps/public_html/index.html
+wget -O /etc/nginx/conf.d/vps.conf "https://vpnstores.net/script/vps.conf"
 /etc/init.d/nginx restart
 
 # Menginstall badvpn dan Configurasi Badvpn Client dan IP IPnya
 cd
-wget -O /usr/bin/badvpn-udpgw "https://wildyvpn.my.id/script/badvpn-udpgw64"
+wget -O /usr/bin/badvpn-udpgw "https://vpnstores.net/badvpn-udpgw64"
 sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7100 --max-clients 1000' /etc/rc.local
 sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7200 --max-clients 1000' /etc/rc.local
 sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-clients 1000' /etc/rc.local
@@ -135,7 +135,7 @@ rm -rf /root/dropbear-2020.80
 # install squid3 port dan install file config squid 3
 cd
 apt -y install squid3
-wget -O /etc/squid/squid.conf "https://wildyvpn.my.id/script/squidbaru.conf"
+wget -O /etc/squid/squid.conf "https://vpnstores.net/squidbaru.conf"
 sed -i $MYIP2 /etc/squid/squid.conf
 
 # Menginstall VN Stat Dan Config VNSTAT
@@ -205,11 +205,11 @@ sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
 /etc/init.d/stunnel4 restart
 
 #Configurasi OpenVPN & Wireguard & SSR & L2TP & Dan V2RAY
-wget https://wildyvpn.my.id/script/ovpn.sh &&  chmod +x ovpn.sh && ./ovpn.sh
-wget https://wildyvpn.my.id/script/wg.sh && chmod +x wg.sh && ./wg.sh
-wget https://wildyvpn.my.id/script/ssr.sh && chmod +x ssr.sh && ./ssr.sh
-wget https://wildyvpn.my.id/ipsec.sh && chmod +x ipsec.sh && ./ipsec.sh
-wget https://wildyvpn.my.id/v2ray.sh && chmod +x v2ray.sh && ./v2ray.sh
+wget https://vpnstores.net/ovpn.sh &&  chmod +x ovpn.sh && ./ovpn.sh
+wget https://vpnstores.net/script/wg.sh && chmod +x wg.sh && ./wg.sh
+wget https://vpnstores.net/script/ssr.sh && chmod +x ssr.sh && ./ssr.sh
+wget https://vpnstores.net/ipsec.sh && chmod +x ipsec.sh && ./ipsec.sh
+wget https://vpnstores.net/v2ray.sh && chmod +x v2ray.sh && ./v2ray.sh
 
 # Menginstall Fail2BAN / Multi Log Banned
 apt -y install fail2ban
@@ -252,21 +252,21 @@ sed -i 's@DROPBEAR_BANNER=""@DROPBEAR_BANNER="/etc/issue.net"@g' /etc/default/dr
 
 # DOWNLOAD FILE BADAGGGGGGGG
 cd /usr/bin
-wget -O about "https://wildyvpn.my.id/script/about.sh"
-wget -O v2ray "https://wildyvpn.my.id/script/menu.sh"
-wget -O v2ray "https://wildyvpn.my.id/script/ss.sh"
-wget -O usernew "https://wildyvpn.my.id/script/usernew.sh"
-wget -O trial "https://wildyvpn.my.id/script/trial.sh"
-wget -O hapus "https://wildyvpn.my.id/script/hapus.sh"
-wget -O member "https://wildyvpn.my.id/script/member.sh"
-wget -O delete "https://wildyvpn.my.id/script/delete.sh"
-wget -O cek "https://wildyvpn.my.id/script/cek.sh"
-wget -O restart "https://wildyvpn.my.id/script/restart.sh"
-wget -O speedtest "https://wildyvpn.my.id/script/speedtest.py"
-wget -O info "https://wildyvpn.my.id/script/info.sh"
-wget -O ram "https://wildyvpn.my.id/script/ram.sh"
-wget -O renew "https://wildyvpn.my.id/script/renew.sh"
-wget -O v2ray "https://wildyvpn.my.id/script/v2ray.sh"
+wget -O about "https://vpnstores.net/script/about.sh"
+wget -O v2ray "https://vpnstores.net/script/menu.sh"
+wget -O v2ray "https://vpnstores.net/script/ss.sh"
+wget -O usernew "https://vpnstores.net/script/usernew.sh"
+wget -O trial "https://vpnstores.net/script/trial.sh"
+wget -O hapus "https://vpnstores.net/script/hapus.sh"
+wget -O member "https://vpnstores.net/script/member.sh"
+wget -O delete "https://vpnstores.net/script/delete.sh"
+wget -O cek "https://vpnstores.net/script/cek.sh"
+wget -O restart "https://vpnstores.net/script/restart.sh"
+wget -O speedtest "https://vpnstores.net/script/speedtest.py"
+wget -O info "https://vpnstores.net/script/info.sh"
+wget -O ram "https://vpnstores.net/script/ram.sh"
+wget -O renew "https://vpnstores.net/script/renew.sh"
+wget -O v2ray "https://vpnstores.net/script/v2ray.sh"
 
 echo "SABAR MANG KEDENG DEUI GEHH ANGGES" >> /etc/crontab
 chmod +x menu
@@ -331,7 +331,7 @@ echo "Dropbear         : 109 110 143 456"  | tee -a log-install.txt
 echo "OpenVPN          : TCP 1194 (http://$MYIP:81/client-tcp-1194.ovpn)"  | tee -a log-install.txt
 echo "OpenVPN          : UDP 2200 (http://$MYIP:81/client-udp-2200.ovpn)"  | tee -a log-install.txt
 echo "OpenVPN          : SSL 442 (http://$MYIP:81/client-tcp-442.ovpn)"  | tee -a log-install.txt
-echo "SSL/TLS          : 443 222 777 990"  | tee -a log-install.txt
+echo "SSL/TLS          : 222 443 777 990"  | tee -a log-install.txt
 echo "Badvpn           : badvpn-udpgw port 7100 7200 7300"  | tee -a log-install.txt
 echo "Squid            : 80 8080 3128 (Limited IP)"  | tee -a log-install.txt
 echo "Wireguard        : 6969"  | tee -a log-install.txt
@@ -379,8 +379,7 @@ echo "■□■□■□■□■■□■□■□■□■■□■□■□�
 echo "* addv2ray      : crate User V2RAY " | tee -a log-install.txt
 echo "* delv2ray      : deleting User V2RAY" | tee -a log-install.txt
 echo "* v2ray add     : crate v2ray websocket tls port 80 untuk edu/opok" | tee -a log-install.txt
-echo "         »»————> UNTUK V2RAY PORT 80 SILAHKAN TULIS LANGSUNG (V2RAY ADD) <————«« | tee -a log-install.txt
-echo "         »»————> jika gagal membuat port 80 harap cek/ubah di squid proxy <————«« | tee -a log-install.txt
+echo "*UNTUK V2RAY PORT 80 SILAHKAN GANTI SQUID OROXY MENJADI 8888/8880 DAN TULIS LANGSUNG (V2RAY ADD)" | tee -a log-install.txt
 echo "■□■□■□■□■■□■□■□■□■■□■□■□■□■■□■□■□■□■■□■□■□■□ ADMIN SYSTEM VPS ■□■□■□■□■■□■□■□■□■■□■□■□■□■■□■□■□■□■■□■□■□□" | tee -a log-install.txt
 echo "* ram           : Melihat Penggunaan Ram VPS" | tee -a log-install.txt
 echo "* speedtest     : Speedtest VPS" | tee -a log-install.txt
