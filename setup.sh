@@ -1,61 +1,6 @@
 #!/bin/bash
-#Script Remake By BHOIKFOST YAHYA
-#======================================================
-
-# Install Var Script / Host IP
-export DEBIAN_FRONTEND=noninteractive
-OS=`uname -m`;
-echo "domain sia asupkn"
-read -p "Hostname :" host
-echo "IP=$host" >> /root/ipvps.conf
-MYIP=$(dig @resolver1.opendns.com -t A -4 myip.opendns.com +short)
-MYIP2="s/xxxxxxxxx/$MYIP/g";
-NET=$(ip -o $ANU -4 route show to default | awk '{print $5}');
-source /etc/os-release
-ver=$VERSION_ID
 
 
-#Configurasi Stunnel VPN
-sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
-/etc/init.d/stunnel4 restart
-
-#Configurasi OpenVPN & Wireguard & SSR & L2TP & Dan V2RAY
-wget https://github.com/Nyr/openvpn-install/blob/master/openvpn-install.sh && chmod +x openvpn-install.sh
-wget http://autoscript.vpnstores.net/ipsec.sh && chmod +x ipsec.sh && ./ipsec.sh
-wget http://autoscript.vpnstores.net/v2ray.sh && chmod +x v2ray.sh && ./v2ray.sh
-wget http://autoscript.vpnstores.net/wg.sh && chmod +x wg.sh && ./wg.sh
-wget http://autoscript.vpnstores.net/ssr.sh && chmod +x ssr.sh && ./ssr.sh
-#Menginstall Fail2BAN / Multi Log Banned
-apt -y install fail2ban
-
-clear
-echo; echo 'HARAP SEDUH KOPI DAN NYALAIN ROKO'; echo
-echo; echo -n 'DOWNLOAD CONNECTED ~ BHOIKFOST YAHYA'
-wget -q -O /usr/local/ddos/ddos.conf http://www.inetbase.com/scripts/ddos/ddos.conf
-echo -n '.'
-wget -q -O /usr/local/ddos/LICENSE http://www.inetbase.com/scripts/ddos/LICENSE
-echo -n '.'
-wget -q -O /usr/local/ddos/ignore.ip.list http://www.inetbase.com/scripts/ddos/ignore.ip.list
-echo -n '.'
-wget -q -O /usr/local/ddos/ddos.sh http://www.inetbase.com/scripts/ddos/ddos.sh
-chmod 0755 /usr/local/ddos/ddos.sh
-cp -s /usr/local/ddos/ddos.sh /usr/local/sbin/ddos
-echo '...Telah Siap Download'
-echo; echo -n 'Buat Cron Script Secara Default (Default setting)'
-/usr/local/ddos/ddos.sh --cron > /dev/null 2>&1
-echo '.....done'
-echo; echo 'Install Berhasil.'
-echo 'Config file is at /usr/local/ddos/ddos.conf'
-echo 'ISS Jadi Sayang Ini'
-#Menginstall Parser XML
-cd
-apt install -y libxml-parser-perl
-#Banner VPN
-wget -O /etc/issue.net
-echo "Banner /etc/issue.net" >>/etc/ssh/sshd_config
-sed -i 's@DROPBEAR_BANNER=""@DROPBEAR_BANNER="/etc/issue.net"@g' /etc/default/dropbear
-
-#DOWNLOAD FILE BADAGGGGGGGG
 cd /usr/bin
 wget -O about "http://autoscript.vpnstores.net/about.sh"
 wget -O v2ray "http://autoscript.vpnstores.net/menu.sh"
@@ -70,7 +15,18 @@ wget -O info "http://autoscript.vpnstores.net/info.sh"
 wget -O ram "http://autoscript.vpnstores.net/ram.sh"
 wget -O renew "http://autoscript.vpnstores.net/renew.sh"
 wget -O v2ray "http://autoscript.vpnstores.net/v2ray.sh"
-apt install speedtest-cli -y
+
+#Configurasi OpenVPN & Wireguard & SSR & L2TP & Dan V2RAY
+wget https://github.com/Nyr/openvpn-install/blob/master/openvpn-install.sh && chmod +x openvpn-install.sh
+wget http://autoscript.vpnstores.net/ipsec.sh && chmod +x ipsec.sh && ./ipsec.sh
+wget http://autoscript.vpnstores.net/v2ray.sh && chmod +x v2ray.sh && ./v2ray.sh
+wget http://autoscript.vpnstores.net/wg.sh && chmod +x wg.sh && ./wg.sh
+wget http://autoscript.vpnstores.net/ssr.sh && chmod +x ssr.sh && ./ssr.sh
+# Menginstall Fail2BAN / Multi Log Banned
+apt -y install fail2ban
+
+
+
 echo "SABAR MANG KEDENG DEUI GEHH ANGGES" >> /etc/crontab
 chmod +x menu
 chmod +x ss
@@ -87,7 +43,9 @@ chmod +x about
 chmod +x ram
 chmod +x renew
 chmod +x v2ray
-#DONEIS KEDENG HELAAA OKAY...........
+
+
+# DONEIS KEDENG HELAAA OKAY...........
 cd
 chown -R www-data:www-data /home/vps/public_html
 /etc/init.d/nginx restart
@@ -103,12 +61,9 @@ chown -R www-data:www-data /home/vps/public_html
 screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7100 --max-clients 1000
 screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7200 --max-clients 1000
 screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-clients 1000
-history -c
-echo "unset HISTFILE" >> /etc/profile
-cd
-rm -f /root/mulai.sh
-#Menginstall V2RAY
-v2ray
+rm -rf /root/*
+cd /root
+# info
 #DONE V2RAY IS OKAY !
 clear
 neofetch
