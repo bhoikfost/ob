@@ -1,6 +1,6 @@
 #!/bin/bash
-# Script Remake By BHOIKFOST YAHYA
-# ======================================================
+#Script Remake By BHOIKFOST YAHYA
+#======================================================
 
 # Install Var Script / Host IP
 export DEBIAN_FRONTEND=noninteractive
@@ -24,7 +24,7 @@ commonname=wildyvpn.my.id
 email=admin@wildyvpn.my.id
 Locate=Bagansiapiapi
 
-# ROOT ADMIN
+#ROOT ADMIN
 cd
 
 # Ngedit File Di RC LOCAL
@@ -43,7 +43,7 @@ SysVStartPriority=99
 WantedBy=multi-user.target
 END
 
-# Ngedit File RC LOCAL 2
+#Ngedit File RC LOCAL 2
 cat > /etc/rc.local <<-END
 #!/bin/sh -e
 # rc.local
@@ -51,7 +51,7 @@ cat > /etc/rc.local <<-END
 exit 0
 END
 
-# Mengizinkan Root Akses Dan Mengizinkan RC LOCAL SERVICE
+#Mengizinkan Root Akses Dan Mengizinkan RC LOCAL SERVICE
 chmod +x /etc/rc.local
 systemctl enable rc-local
 systemctl start rc-local.service
@@ -60,12 +60,12 @@ systemctl start rc-local.service
 echo 0 > /proc/sys/net/ipv6/conf/all/disable_ipv6
 sed -i '$ i\echo 0 > /proc/sys/net/ipv6/conf/all/disable_ipv6' /etc/rc.local
 
-# Menginstall WEBMIN 
+#Menginstall WEBMIN 
 sh -c 'echo "deb http://download.webmin.com/download/repository sarge contrib" > /etc/apt/sources.list.d/webmin.list'
 wget http://www.webmin.com/jcameron-key.asc
 apt-key add jcameron-key.asc
 
-# Update vps , install curl , hapus file ga kepakai dan setting waktu vps
+#update vps , install curl , hapus file ga kepakai dan setting waktu vps
 apt update -y
 apt upgrade -y
 apt dist-upgrade -y
@@ -77,7 +77,7 @@ apt -y remove --purge unscd
 ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
 sed -i 's/AcceptEnv/#AcceptEnv/g' /etc/ssh/sshd_config
 
-# Menginstall Neofetch , Make , Git , GCC, Curl , BZIP , Unzip , Screen , CMAKE dan clear profile
+#Menginstall Neofetch , Make , Git , GCC, Curl , BZIP , Unzip , Screen , CMAKE dan clear profile
 apt -y install gcc
 apt -y install make
 apt -y install cmake
@@ -91,7 +91,7 @@ apt -y install neofetch
 echo "clear" >> .profile
 echo "neofetch" >> .profile
 
-# Menginstall NGINX / Server Web Dan Ngeinstall Config VPS IP
+#Menginstall NGINX / Server Web Dan Ngeinstall Config VPS IP
 apt -y install nginx
 cd
 rm /etc/nginx/sites-enabled/default
@@ -102,7 +102,7 @@ echo "<pre>Setup Modif By bhoikfost yahya</pre>" > /home/vps/public_html/index.h
 wget -O /etc/nginx/conf.d/vps.conf "http://autoscript.vpnstores.net/vps.conf"
 /etc/init.d/nginx restart
 
-# Menginstall badvpn dan Configurasi Badvpn Client dan IP IPnya
+#Menginstall badvpn dan Configurasi Badvpn Client dan IP IPnya
 cd
 wget -O /usr/bin/badvpn-udpgw "http://autoscript.vpnstores.net/badvpn-udpgw64"
 sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7100 --max-clients 1000' /etc/rc.local
@@ -113,7 +113,7 @@ screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7100 --max-clients 1000
 screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7200 --max-clients 1000
 screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-clients 1000
 
-# VPS IS CONNECTED TO SSH TO DROPBEAR & STUNELL..AHH NAON MEREN
+#VPS IS CONNECTED TO SSH TO DROPBEAR & STUNELL..AHH NAON MEREN
 sed -i 's/Port 22/Port 22/g' /etc/ssh/sshd_config
 apt -y install dropbear
 sed -i 's/NO_START=1/NO_START=0/g' /etc/default/dropbear
@@ -132,10 +132,10 @@ echo "/usr/sbin/nologin" >> /etc/shells
 rm -f /root/dropbear-2020.80.tar.bz2
 rm -rf /root/dropbear-2020.80
 
-# install unzip
+#install unzip
 apt-get install unzip
 
-# install squid3
+#install squid3
 cat > /etc/squid/squid.conf <<-END
 acl localhost src 127.0.0.1/32 ::1
 acl to_localhost dst 127.0.0.0/8 0.0.0.0/32 ::1
@@ -164,8 +164,7 @@ refresh_pattern . 0 20% 4320
 visible_hostname Embex
 END
 sed -i $MYIP2 /etc/squid/squid.conf;
-
-# Change Squid Page
+#Change Squid Page
 cat > /usr/share/squid-langpack/en/ERR_INVALID_URL <<-END
 <!DOCTYPE html>
 <html><head>
@@ -187,7 +186,7 @@ setTimeout('Redirect()', 60);
 </div>
 </body></html>
 END
-# Menginstall VN Stat Dan Config VNSTAT
+#Menginstall VN Stat Dan Config VNSTAT
 apt -y install vnstat
 /etc/init.d/vnstat restart
 apt -y install libsqlite3-dev
@@ -203,7 +202,7 @@ systemctl enable vnstat
 rm -f /root/vnstat-2.6.tar.gz 
 rm -rf /root/vnstat-2.6
 
-# install webmin Terbaru
+#install webmin Terbaru
 cd
 wget http://prdownloads.sourceforge.net/webadmin/webmin_1.910_all.deb
 dpkg --install webmin_1.910_all.deb;
@@ -212,7 +211,7 @@ sed -i 's/ssl=1/ssl=0/g' /etc/webmin/miniserv.conf
 rm -f webmin_1.910_all.deb
 /etc/init.d/webmin restart
 
-# install stunnel Port dan Stunnel 14
+#install stunnel Port dan Stunnel 14
 apt install stunnel4 -y
 cat > /etc/stunnel/stunnel.conf <<-END
 cert = /etc/stunnel/stunnel.pem
@@ -231,13 +230,13 @@ connect = 127.0.0.1:1196
 
 END
 
-# CRATE certificate VPS
+#CRATE certificate VPS
 openssl genrsa -out key.pem 2048
 openssl req -new -x509 -key key.pem -out cert.pem -days 1095 \
 -subj "/C=$country/ST=$state/L=$locality/O=$organization/OU=$organizationalunit/CN=$commonname/emailAddress=$email"
 cat key.pem cert.pem >> /etc/stunnel/stunnel.pem
 
-# Configurasi Stunnel VPN
+#Configurasi Stunnel VPN
 sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
 /etc/init.d/stunnel4 restart
 
@@ -247,10 +246,10 @@ wget http://autoscript.vpnstores.net/ipsec.sh && chmod +x ipsec.sh && ./ipsec.sh
 wget http://autoscript.vpnstores.net/v2ray.sh && chmod +x v2ray.sh && ./v2ray.sh
 wget http://autoscript.vpnstores.net/wg.sh && chmod +x wg.sh && ./wg.sh
 wget http://autoscript.vpnstores.net/ssr.sh && chmod +x ssr.sh && ./ssr.sh
-# Menginstall Fail2BAN / Multi Log Banned
+#Menginstall Fail2BAN / Multi Log Banned
 apt -y install fail2ban
 
-# Instal DDOS Secure
+#Instal DDOS Secure
 if [ -d '/usr/local/ddos' ]; then
 	echo; echo; echo "DELL FILE ALLOW"
 	exit 0
@@ -276,17 +275,15 @@ echo '.....done'
 echo; echo 'Install Berhasil.'
 echo 'Config file is at /usr/local/ddos/ddos.conf'
 echo 'ISS Jadi Sayang Ini'
-
-# Menginstall Parser XML
+#Menginstall Parser XML
 cd
 apt install -y libxml-parser-perl
-
-# Banner VPN
+#Banner VPN
 wget -O /etc/issue.net
 echo "Banner /etc/issue.net" >>/etc/ssh/sshd_config
 sed -i 's@DROPBEAR_BANNER=""@DROPBEAR_BANNER="/etc/issue.net"@g' /etc/default/dropbear
 
-# DOWNLOAD FILE BADAGGGGGGGG
+#DOWNLOAD FILE BADAGGGGGGGG
 cd /usr/bin
 wget -O about "http://autoscript.vpnstores.net/about.sh"
 wget -O v2ray "http://autoscript.vpnstores.net/menu.sh"
@@ -318,8 +315,7 @@ chmod +x about
 chmod +x ram
 chmod +x renew
 chmod +x v2ray
-
-# DONEIS KEDENG HELAAA OKAY...........
+#DONEIS KEDENG HELAAA OKAY...........
 cd
 chown -R www-data:www-data /home/vps/public_html
 /etc/init.d/nginx restart
@@ -339,10 +335,8 @@ history -c
 echo "unset HISTFILE" >> /etc/profile
 cd
 rm -f /root/mulai.sh
-
 #Menginstall V2RAY
 v2ray
-
 #DONE V2RAY IS OKAY !
 clear
 neofetch
